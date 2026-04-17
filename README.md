@@ -27,7 +27,7 @@ com grafo interativo Plotly e dashboard profissional de 6 abas.**
 ## 🎬 Demo rápida
 
 <div align="center">
-  <img src="assets/gifs/dashboard_navegacao.gif" alt="Navegação pelo Dashboard DataLineage v5" width="90%">
+ + <img src="Computador/assets/gifs/dashboard_navegacao.gif" alt="Navegação pelo Dashboard DataLineage v5" width="90%">
   <p><em>Dashboard com 6 abas interativas: grafo de lineage, KPIs, qualidade, análise temporal, distribuições e diagnóstico</em></p>
 </div>
 
@@ -52,7 +52,7 @@ O **DataLineage v5** é um pipeline completo de engenharia de dados que:
 ## 🏗️ Arquitetura
 
 <div align="center">
-  <img src="assets/arquitetura/diagrama_alto_nivel.png" alt="Diagrama de alto nível — DataLineage v5" width="85%">
+  <img src="Computador/assets/arquitetura/diagrama_alto_nivel.png" alt="Diagrama de alto nível — DataLineage v5" width="85%">
   <p><em>Visão de alto nível do pipeline</em></p>
 </div>
 
@@ -95,7 +95,7 @@ O **DataLineage v5** é um pipeline completo de engenharia de dados que:
 ```
 
 <div align="center">
-  <img src="assets/arquitetura/diagrama_tecnico.png" alt="Diagrama técnico detalhado" width="85%">
+  <img src="Computador/assets/arquitetura/diagrama_tecnico.png" alt="Diagrama técnico detalhado" width="85%">
   <p><em>Componentes técnicos e integrações</em></p>
 </div>
 
@@ -111,19 +111,19 @@ task_ingestao  →  task_validacao  →  task_dbt
 ## 🗺️ Grafo de Linhagem Interativo
 
 <div align="center">
-  <img src="assets/grafo/grafo_ponta_a_ponta.png" alt="Grafo de Lineage Ponta a Ponta" width="90%">
+  <img src="Computador/assets/grafo/grafo_ponta_a_ponta.png" alt="Grafo de Lineage Ponta a Ponta" width="90%">
   <p><em>Grafo renderizado com plotly.graph_objects — nós = datasets, arestas = transformações, cores = camadas</em></p>
 </div>
 
 <div align="center">
-  <img src="assets/gifs/grafo_interativo.gif" alt="Grafo interativo — zoom e hover" width="75%">
+  <img src="Computador/assets/gifs/grafo_interativo.gif" alt="Grafo interativo — zoom e hover" width="75%">
   <p><em>Interatividade: hover nos nós, zoom, detalhes das transformações</em></p>
 </div>
 
 ### Diagnóstico de Integridade do Lineage
 
 <div align="center">
-  <img src="assets/diagnostico/diag_barras_linhagem.png" alt="Diagnóstico de Linhagem" width="80%">
+  <img src="Computador/assets/diagnostico/diag_barras_linhagem.png" alt="Diagnóstico de Linhagem" width="80%">
   <p><em>Todos os 10 jobs com inputs e outputs definidos — grafo 100% íntegro</em></p>
 </div>
 
@@ -147,36 +147,36 @@ dbt_mart_kpis_mensais  │   1    │    1    │  OK
 ### KPIs Mensais
 
 <div align="center">
-  <img src="assets/gifs/drill_down.gif" alt="KPIs interativos com drill-down" width="85%">
+  <img src="Computador/assets/gifs/drill_down.gif" alt="KPIs interativos com drill-down" width="85%">
   <p><em>Filtros por período, estatísticas descritivas (média, mediana, desvio), trendline e exportação CSV</em></p>
 </div>
 
 <table>
   <tr>
     <td align="center">
-      <img src="assets/kpis/kpi_total_pedidos.png" width="200"><br>
+      <img src="Computador/assets/kpis/kpi_total_pedidos.png" width="200"><br>
       <sub>Total de Pedidos</sub>
     </td>
     <td align="center">
-      <img src="assets/kpis/kpi_receita.png" width="200"><br>
+      <img src="Computador/assets/kpis/kpi_receita.png" width="200"><br>
       <sub>Receita Total</sub>
     </td>
     <td align="center">
-      <img src="assets/kpis/kpi_ticket_medio.png" width="200"><br>
+      <img src="Computador/assets/kpis/kpi_ticket_medio.png" width="200"><br>
       <sub>Ticket Médio</sub>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="assets/kpis/kpi_entrega_prazo.png" width="200"><br>
+     <img src="Computador/assets/kpis/kpi_entrega_prazo.png" width="200"><br>
       <sub>% Entrega no Prazo</sub>
     </td>
     <td align="center">
-      <img src="assets/kpis/kpi_unicos.png" width="200"><br>
+      <img src="Computador/assets/kpis/kpi_unicos.png" width="200"><br>
       <sub>Clientes Únicos</sub>
     </td>
     <td align="center">
-      <img src="assets/kpis/kpi_total_itens.png" width="200"><br>
+      <img src="Computador/assets/kpis/kpi_total_itens.png" width="200"><br>
       <sub>Total de Itens</sub>
     </td>
   </tr>
@@ -185,47 +185,47 @@ dbt_mart_kpis_mensais  │   1    │    1    │  OK
 ### Análise Temporal e Distribuições
 
 <div align="center">
-  <img src="assets/analise/analise_temporal_pedidos_receita.png" alt="Análise Temporal" width="80%">
+  + <img src="Computador/assets/analise/analise_temporal_pedidos_receita.png" alt="Análise Temporal" width="80%">
   <p><em>Evolução mensal de pedidos e receita com gráfico de área</em></p>
 </div>
 
 <table>
   <tr>
     <td align="center">
-      <img src="assets/analise/analise_temporal_sazonalidade.png" width="280"><br>
+      + <img src="Computador/assets/analise/analise_temporal_sazonalidade.png" width="280">
       <sub>Sazonalidade por mês do ano</sub>
     </td>
     <td align="center">
-      <img src="assets/analise/distribuicoes_valor_pedido.png" width="280"><br>
+     + <img src="Computador/assets/analise/distribuicoes_valor_pedido.png" width="280">
       <sub>Distribuição do valor do pedido</sub>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="assets/analise/distribuicoes_tempo_entrega.png" width="280"><br>
+      + <img src="Computador/assets/analise/distribuicoes_tempo_entrega.png" width="280">
       <sub>Distribuição do tempo de entrega</sub>
     </td>
     <td align="center">
-      <img src="assets/analise/boxplot_tipo_pagamento.png" width="280"><br>
+     + <img src="Computador/assets/analise/boxplot_tipo_pagamento.png" width="280">
       <sub>Valor por tipo de pagamento</sub>
     </td>
   </tr>
 </table>
 
 <div align="center">
-  <img src="assets/analise/porc_entrega_estado.png" alt="% Entrega no Prazo por Estado" width="75%">
+  <img src="Computador/assets/analise/porc_entrega_estado.png" alt="% Entrega no Prazo por Estado" width="75%">
   <p><em>% de entrega no prazo por estado — barras horizontais com escala vermelho→verde</em></p>
 </div>
 
 ### Qualidade dos Dados (Great Expectations)
 
 <div align="center">
-  <img src="assets/qualidade/ge_taxa_sucesso.png" alt="Taxa de Sucesso GE por Tabela" width="80%">
+  <img src="Computador/assets/qualidade/ge_taxa_sucesso.png" alt="Taxa de Sucesso GE por Tabela" width="80%">
   <p><em>Taxa de sucesso das expectativas por tabela — falhas destacadas em vermelho</em></p>
 </div>
 
 <div align="center">
-  <img src="assets/qualidade/ge_tabela_sucesso.png" alt="Tabela detalhada de resultados GE" width="75%">
+  + <img src="Computador/assets/qualidade/ge_tabela_sucesso.png" alt="Tabela detalhada de resultados GE" width="75%">
   <p><em>Detalhamento por expectativa: tabela, coluna, tipo e resultado</em></p>
 </div>
 
