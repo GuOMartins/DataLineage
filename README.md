@@ -59,25 +59,39 @@ O **DataLineage v5** é um pipeline completo de engenharia de dados que:
 ### Fluxo completo dos dados
 
 ```
-📁 CSV (Kaggle/Olist) · 9 arquivos · ~100k pedidos reais (2016-2018)
-     │
-     ▼  [Ingestão — Prefect task_ingestao]
-🥉 raw_*  (9 tabelas DuckDB · eventos OpenLineage: CSV → raw_*)
-     │
-     ▼  [Validação — Great Expectations · fallback garantido]
-🥈 validated_*  (9 tabelas · resultados em lineage/ge_resultados.json)
-     │
-     ▼  [Transformação SQL — Prefect task_dbt]
-🥇 stg_orders · stg_customers · stg_order_items · stg_order_payments
-     │
-     ▼  [JOIN convergente — 4 streams → 1 tabela]
-⭐ fact_orders  (com coluna entregue_no_prazo)
-     │
-     ▼  [Agregação mensal]
-🏆 mart_kpis_mensais
-     │
-     ▼  [OpenLineage Events → lineage/events/]
-📊 Dashboard Streamlit + Plotly · 6 abas interativas
+┌─────────────────────────────────────────────────────────────────────┐
+│  📁 CSV (Kaggle/Olist) · 9 arquivos · ~100k pedidos (2016-2018)    │
+└───────────────────────────────┬─────────────────────────────────────┘
+                                │ [Ingestão — Prefect task_ingestao]
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  🥉 raw_* (9 tabelas DuckDB · eventos OpenLineage: CSV → raw_*)     │
+└───────────────────────────────┬─────────────────────────────────────┘
+                                │ [Validação — Great Expectations]
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  🥈 validated_* (9 tabelas · resultados em lineage/ge_resultados.json)│
+└───────────────────────────────┬─────────────────────────────────────┘
+                                │ [Transformação SQL — Prefect task_dbt]
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  🥇 stg_orders · stg_customers · stg_order_items · stg_order_payments│
+└───────────────────────────────┬─────────────────────────────────────┘
+                                │ [JOIN convergente — 4 streams → 1 tabela]
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  ⭐ fact_orders (com coluna entregue_no_prazo)                      │
+└───────────────────────────────┬─────────────────────────────────────┘
+                                │ [Agregação mensal]
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  🏆 mart_kpis_mensais                                               │
+└───────────────────────────────┬─────────────────────────────────────┘
+                                │ [OpenLineage Events → lineage/events/]
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  📊 Dashboard Streamlit + Plotly · 6 abas interativas               │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 <div align="center">
