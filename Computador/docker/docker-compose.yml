@@ -1,0 +1,79 @@
+# ==============================================================
+# docker/docker-compose.yml
+# Marquez (backend OpenLineage) + PostgreSQL
+#
+# Uso:
+#   cd docker
+#   docker compose up -d
+#   Aguarde: http://localhost:5000/api/v1/namespaces
+#   UI web:  http://localhost:3000
+#
+# Para parar:
+#   docker compose down
+# Para apagar dados:
+#   docker compose down -v
+# ==============================================================
+
+version: "3.8"
+
+services:
+  marquez-db:
+    image: postgres:14
+    container_name: marquez_db
+    environment:
+      POSTGRES_USER:     ${MARQUEZ_DB_USER:-marquez}
+      POSTGRES_PASSWORD: ${MARQUEZ_DB_PASSWORD:-marquez}
+      POSTGRES_DB:       ${MARQUEZ_DB_NAME:-marquez}
+    volumes:
+      - marquez_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marquez"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - marquez_net
+
+  marquez:
+    image: marquezproject/marquez:latest
+    container_name: marquez_api
+    environment:
+      MARQUEZ_DB_HOST:     marquez-db
+      MARQUEZ_DB_PORT:     5432
+      MARQUEZ_DB_USERNAME: ${MARQUEZ_DB_USER:-marquez}
+      MARQUEZ_DB_PASSWORD: ${MARQUEZ_DB_PASSWORD:-marquez}
+      MARQUEZ_DB_NAME:     ${MARQUEZ_DB_NAME:-marquez}
+    ports:
+      - "5000:5000"   # API OpenLineage
+      - "5001:5001"   # Admin
+    depends_on:
+      marquez-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/api/v1/namespaces || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+    networks:
+      - marquez_net
+
+  marquez-web:
+    image: marquezproject/marquez-web:latest
+    container_name: marquez_ui
+    environment:
+      MARQUEZ_HOST: marquez
+      MARQUEZ_PORT: 5000
+    ports:
+      - "3000:3000"   # UI web
+    depends_on:
+      marquez:
+        condition: service_healthy
+    networks:
+      - marquez_net
+
+volumes:
+  marquez_pgdata:
+
+networks:
+  marquez_net:
+    driver: bridge

@@ -1,0 +1,106 @@
+# ==============================================================
+# DataLineage — .gitignore
+# ==============================================================
+
+# ── Dados (NUNCA versione dados brutos ou o banco local) ──────
+dados/raw/*.csv
+dados/raw/*.parquet
+dados/processed/
+dados/*.duckdb
+*.duckdb
+
+# ── Eventos OpenLineage e resultados GE ───────────────────────
+lineage/events/*.json
+lineage/ge_resultados.json
+
+# ── Manter pastas vazias no repositório ───────────────────────
+!dados/raw/.gitkeep
+!dados/processed/.gitkeep
+!lineage/events/.gitkeep
+
+# ── Credenciais (NUNCA suba para o GitHub!) ──────────────────
+.env
+*.env
+kaggle.json
+~/.kaggle/
+secrets/
+credentials/
+
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ── Ambientes virtuais ────────────────────────────────────────
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+.conda/
+
+# ── dbt ───────────────────────────────────────────────────────
+transformacoes/target/
+transformacoes/dbt_packages/
+transformacoes/logs/
+dbt_packages/
+target/
+profiles.yml
+
+# ── Great Expectations ────────────────────────────────────────
+great_expectations/uncommitted/
+validacoes/great_expectations/uncommitted/
+
+# ── Prefect ───────────────────────────────────────────────────
+.prefect/
+prefect.db
+
+# ── Logs ─────────────────────────────────────────────────────
+logs/
+*.log
+*.log.*
+
+# ── Jupyter / Colab ──────────────────────────────────────────
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+# NÃO ignorar .ipynb (notebook é parte do projeto)
+# *.ipynb  ← removido propositalmente
+
+# ── Docker ───────────────────────────────────────────────────
+docker/.env
+docker/data/
+marquez_data/
+
+# ── IDEs e editores ──────────────────────────────────────────
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+*~
+
+# ── Testes ───────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
