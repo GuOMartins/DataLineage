@@ -337,35 +337,145 @@ DataLineage/
 
 ---
 
+```markdown
+## 🚀 Como Rodar
+
+### ▶️ Opção 1 — Google Colab (recomendado para testes rápidos)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GuOMartins/DataLineage/blob/main/notebooks/datalineage_v5_colab.ipynb)
+
+> Clique no botão acima, execute as células em ordem e o pipeline rodará inteiro na nuvem – sem instalar nada local.
+
+---
+
+### 💻 Opção 2 — Local (no seu computador)
+
+#### 📘 Passo a passo (detalhado)
+
+1. **Clone o repositório**
+   ```bash
+   git clone https://github.com/GuOMartins/DataLineage.git
+   cd DataLineage
+   ```
+
+2. **Crie e ative um ambiente virtual**
+   - Linux/Mac:  
+     ```bash
+     python -m venv venv
+     source venv/bin/activate
+     ```
+   - Windows (cmd):  
+     ```cmd
+     python -m venv venv
+     venv\Scripts\activate
+     ```
+
+3. **Instale as dependências**
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+
+4. **Configure suas credenciais Kaggle** (para baixar o dataset Olist)  
+   Coloque o arquivo `kaggle.json` (gerado no site do Kaggle) dentro da pasta `~/.kaggle/` (Linux/Mac) ou `%USERPROFILE%\.kaggle\` (Windows).
+
+5. **Suba os serviços (Marquez + OpenLineage) com Docker** (opcional, mas recomendado)
+   ```bash
+   cd docker
+   docker compose up -d
+   cd ..
+   ```
+
+6. **Execute o pipeline Prefect**
+   ```bash
+   export PROJECT_ROOT=$(pwd) OPENLINEAGE_URL=http://localhost:5000   # Linux/Mac
+   # ou no Windows (cmd):
+   set PROJECT_ROOT=%cd% && set OPENLINEAGE_URL=http://localhost:5000
+
+   python orquestrador/pipeline_flow.py
+   ```
+
+7. **Inicie o dashboard**
+   ```bash
+   streamlit run visualizacao/dashboard.py
+   ```
+
+---
+
+#### ⚡ Resumo para apressadinhos (copie e cole os comandos)
+
+**Linux / Mac:**
+```bash
+git clone https://github.com/GuOMartins/DataLineage.git && cd DataLineage
+python -m venv venv && source venv/bin/activate
+pip install --upgrade pip && pip install -r requirements.txt
+# Configure ~/.kaggle/kaggle.json
+cd docker && docker compose up -d && cd ..
+export PROJECT_ROOT=$(pwd) OPENLINEAGE_URL=http://localhost:5000
+python orquestrador/pipeline_flow.py
+streamlit run visualizacao/dashboard.py
+```
+
+**Windows (cmd):**
+```cmd
+git clone https://github.com/GuOMartins/DataLineage.git && cd DataLineage
+python -m venv venv && venv\Scripts\activate
+pip install --upgrade pip && pip install -r requirements.txt
+REM Configure %USERPROFILE%\.kaggle\kaggle.json
+cd docker && docker compose up -d && cd ..
+set PROJECT_ROOT=%cd% && set OPENLINEAGE_URL=http://localhost:5000
+python orquestrador/pipeline_flow.py
+streamlit run visualizacao/dashboard.py
+```
+
+> 💡 **Dica:** Se não quiser usar o Docker (Marquez), o pipeline ainda funciona – os eventos OpenLineage serão salvos localmente na pasta `lineage/events/`.
+```
+
+---
+
+## Opção 2 – Apenas o resumo para apressadinhos (sem detalhes)
+
+```markdown
 ## 🚀 Como Rodar
 
 ### ▶️ Opção 1 — Google Colab (recomendado)
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GuOMartins/DataLineage/blob/main/notebooks/datalineage_v5_colab.ipynb)
 
-1. Execute a **Célula 1** → `Runtime → Restart runtime`
-2. Execute as **Células 2 a 12** em ordem
-3. Execute a **Célula 13** (pipeline completo)
-4. Execute a **Célula 15** (dashboard via ngrok)
+---
 
-> Você precisará de um token gratuito do [ngrok.com](https://ngrok.com).
+### ⚡ Opção 2 — Local (para apressadinhos)
 
-### 💻 Opção 2 — Local
-
+**Linux / Mac:**
 ```bash
-git clone https://github.com/GuOMartins/DataLineage.git
-cd DataLineage
-python -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
+git clone https://github.com/GuOMartins/DataLineage.git && cd DataLineage
+python -m venv venv && source venv/bin/activate
 pip install --upgrade pip && pip install -r requirements.txt
-
-# Configure ~/.kaggle/kaggle.json com suas credenciais Kaggle
-# Depois:
+# Configure ~/.kaggle/kaggle.json
 cd docker && docker compose up -d && cd ..
 export PROJECT_ROOT=$(pwd) OPENLINEAGE_URL=http://localhost:5000
-
 python orquestrador/pipeline_flow.py
-PROJECT_ROOT=$(pwd) streamlit run visualizacao/dashboard.py
+streamlit run visualizacao/dashboard.py
 ```
+
+**Windows (cmd):**
+```cmd
+git clone https://github.com/GuOMartins/DataLineage.git && cd DataLineage
+python -m venv venv && venv\Scripts\activate
+pip install --upgrade pip && pip install -r requirements.txt
+REM Configure %USERPROFILE%\.kaggle\kaggle.json
+cd docker && docker compose up -d && cd ..
+set PROJECT_ROOT=%cd% && set OPENLINEAGE_URL=http://localhost:5000
+python orquestrador/pipeline_flow.py
+streamlit run visualizacao/dashboard.py
+```
+
+> 💡 Sem Docker? Os eventos OpenLineage são salvos em `lineage/events/` mesmo assim.
+```
+
+---
+
+Escolha a que mais combina com seu README. A **Opção 1** é mais completa e profissional; a **Opção 2** é ultra direta. Ambas mantêm o badge do Colab funcionando.
 
 ---
 
