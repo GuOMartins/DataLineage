@@ -269,39 +269,71 @@ dbt_mart_kpis_mensais  │   1    │    1    │  OK
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura do Projeto (DataLineage v5)
 
-```
+```text
 DataLineage/
 ├── notebooks/
 │   └── datalineage_v5_colab.ipynb
 ├── orquestrador/
+│   ├── __init__.py
 │   ├── ingestao.py
 │   ├── transformacao_dbt.py
 │   └── pipeline_flow.py
 ├── validacoes/
+│   ├── __init__.py
 │   └── validar_dados.py
 ├── visualizacao/
 │   └── dashboard.py
 ├── utils/
+│   ├── __init__.py
 │   └── openlineage_client.py
-├── assets/
-│   ├── arquitetura/
-│   ├── grafo/
-│   ├── kpis/
-│   ├── analise/
-│   ├── qualidade/
-│   ├── diagnostico/
-│   └── gifs/
+├── dados/
+│   ├── raw/.gitkeep
+│   └── processed/.gitkeep
+├── lineage/
+│   ├── events/.gitkeep
+│   └── openlineage.yml
 ├── docker/
-│   └── docker-compose.yml
-├── dados/raw/          # CSVs Olist (não versionados)
-├── lineage/events/     # Eventos JSON (não versionados)
+│   ├── docker-compose.yml
+│   └── .env.example
+├── assets/                     ← imagens, gráficos e gifs para documentação
+│   ├── arquitetura/
+│   │   ├── diagrama_alto_nivel.png
+│   │   ├── diagrama_tecnico.png
+│   │   └── diagrama_lineage.png
+│   ├── grafo/
+│   │   ├── grafo_ponta_a_ponta.png
+│   │   └── grafo_transformacoes.png
+│   ├── kpis/
+│   │   ├── kpi_total_pedidos.png
+│   │   ├── kpi_receita.png
+│   │   ├── kpi_ticket_medio.png
+│   │   ├── kpi_entrega_prazo.png
+│   │   └── kpi_unicos.png
+│   ├── analise/
+│   │   ├── analise_temporal_pedidos_receita.png
+│   │   ├── analise_temporal_sazonalidade.png
+│   │   ├── distribuicoes_valor_pedido.png
+│   │   ├── distribuicoes_tempo_entrega.png
+│   │   ├── boxplot_tipo_pagamento.png
+│   │   └── porc_entrega_estado.png
+│   ├── qualidade/
+│   │   ├── ge_taxa_sucesso.png
+│   │   └── ge_tabela_sucesso.png
+│   ├── diagnostico/
+│   │   ├── diag_barras_linhagem.png
+│   │   └── tabela_jobs.png
+│   └── gifs/
+│       ├── dashboard_navegacao.gif
+│       ├── grafo_interativo.gif
+│       └── drill_down.gif
 ├── requirements.txt
+├── requirements-dev.txt
+├── .env.example
 ├── .gitignore
 ├── LICENSE
 └── README.md
-```
 
 ---
 
